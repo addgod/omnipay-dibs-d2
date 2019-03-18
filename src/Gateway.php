@@ -34,6 +34,7 @@ class Gateway extends AbstractGateway
             'key2' => '',
             'merchantId' => '',
             'lang' => 'en',
+            'decorator' => null,
             'password' => '',
             'username' => '',
             'testMode' => false,
@@ -150,6 +151,16 @@ class Gateway extends AbstractGateway
     public function getLang()
     {
         return $this->getParameter('lang');
+    }
+
+    public function setDecorator($value)
+    {
+        return $this->setParameter('decorator', $value);
+    }
+
+    public function getDecorator()
+    {
+        return $this->getParameter('decorator');
     }
 
     public function setMerchantId($value)

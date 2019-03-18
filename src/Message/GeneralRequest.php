@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jkh
- * Date: 12/19/17
- * Time: 2:46 PM
- */
 
 namespace Omnipay\DibsD2\Message;
 
@@ -28,6 +22,7 @@ abstract class GeneralRequest extends AbstractRequest
             'md5key'                => $this->getMd5Key(),
             'lang'                  => $this->getLang(),
             'payType'               => $this->getPayType(),
+            'decorator'             => $this->getDecorator(),
             'test'                  => $this->getTestMode(),
         ];
 
@@ -54,6 +49,16 @@ abstract class GeneralRequest extends AbstractRequest
     public function getLang()
     {
         return $this->getParameter('lang');
+    }
+
+    public function setDecorator($value)
+    {
+        return $this->setParameter('decorator', $value);
+    }
+
+    public function getDecorator()
+    {
+        return $this->getParameter('decorator');
     }
 
     public function setOrderId($value)
