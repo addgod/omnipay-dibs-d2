@@ -10,16 +10,16 @@ use Omnipay\Common\Message\AbstractResponse;
 class CompleteResponse extends AbstractResponse
 {
     private $statusCodes = [
-        0 => 'transaction inserted',
-        1 => 'declined',
-        2 => 'authorization approved',
-        3 => 'capture sent to acquirer',
-        4 => 'capture declined by acquirer',
-        5 => 'capture completed',
-        6 => 'authorization deleted',
-        7 => 'capture balanced',
-        8 => 'partially refunded and balanced',
-        9 => 'refund sent to acquirer',
+        0  => 'transaction inserted',
+        1  => 'declined',
+        2  => 'authorization approved',
+        3  => 'capture sent to acquirer',
+        4  => 'capture declined by acquirer',
+        5  => 'capture completed',
+        6  => 'authorization deleted',
+        7  => 'capture balanced',
+        8  => 'partially refunded and balanced',
+        9  => 'refund sent to acquirer',
         10 => 'refund declined',
         11 => 'refund completed',
         12 => 'capture pending',
@@ -33,15 +33,14 @@ class CompleteResponse extends AbstractResponse
         26 => 'postponed',
     ];
 
-
     public function isSuccessful()
     {
-        return in_array($this->data['statuscode'], [2,5,7,11]);
+        return in_array($this->data['statuscode'], [2, 5, 7, 11]);
     }
 
     public function getTransactionReference()
     {
-        return $this->data['orderid'] ?? null;
+        return $this->data['transact'] ?? null;
     }
 
     public function getCode()
@@ -56,6 +55,6 @@ class CompleteResponse extends AbstractResponse
 
     public function getTransactionId()
     {
-        return $this->data['transact'] ?? null;
+        return $this->data['orderid'] ?? null;
     }
 }

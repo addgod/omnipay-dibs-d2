@@ -4,7 +4,6 @@ namespace Omnipay\DibsD2\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
 
-
 abstract class GeneralRequest extends AbstractRequest
 {
     public function getData()
@@ -18,7 +17,7 @@ abstract class GeneralRequest extends AbstractRequest
             'cancelurl'             => $this->getCancelUrl(),
             'currency'              => $this->getCurrencyNumeric(),
             'merchant'              => $this->getMerchantId(),
-            'orderid'               => $this->getOrderId(),
+            'orderid'               => $this->getTransactionId(),
             'md5key'                => $this->getMd5Key(),
             'lang'                  => $this->getLang(),
             'payType'               => $this->getPayType(),
@@ -61,16 +60,6 @@ abstract class GeneralRequest extends AbstractRequest
         return $this->getParameter('decorator');
     }
 
-    public function setOrderId($value)
-    {
-        return $this->setParameter('orderId', $value);
-    }
-
-    public function getOrderId()
-    {
-        return $this->getParameter('orderId');
-    }
-
     public function setMerchantId($value)
     {
         return $this->setParameter('merchantId', $value);
@@ -92,11 +81,11 @@ abstract class GeneralRequest extends AbstractRequest
 
         $parameter_string = '';
         $parameter_string .= 'merchant=' . $this->getMerchantId();
-        $parameter_string .= '&orderid=' . $this->getOrderId();
+        $parameter_string .= '&orderid=' . $this->getTransactionId();
         $parameter_string .= '&currency=' . $this->getCurrencyNumeric();
         $parameter_string .= '&amount=' . $this->getAmountInteger();
 
-        return md5($key2 . md5($key1 . $parameter_string) );
+        return md5($key2 . md5($key1 . $parameter_string));
     }
 
     public function setKey1($value)
