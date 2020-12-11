@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: jkh
  * Date: 12/19/17
- * Time: 3:52 PM
+ * Time: 3:52 PM.
  */
 
 namespace Omnipay\DibsD2\Message;
@@ -18,8 +18,8 @@ class VoidRequest extends GeneralRequest
             'merchant'      => $this->getMerchantId(),
             'md5key'        => $this->getMd5Key(),
             'transact'      => $this->getTransactionId(),
-            'orderid'       => $this->getOrderId(),
-            'textreply'     => "yes",
+            'orderid'       => $this->getTransactionReference(),
+            'textreply'     => 'yes',
         ];
 
         return $data;
@@ -30,7 +30,7 @@ class VoidRequest extends GeneralRequest
         $endpoint = sprintf($this->endpoint, $this->getUsername(), $this->getPassword());
         $http_response = $this->httpClient->request('POST', $endpoint, ['Content-type' => 'text/plain'], http_build_query($data));
         parse_str($http_response->getBody(true), $output);
+
         return $this->response = new PostResponse($this, $output);
     }
-
 }
