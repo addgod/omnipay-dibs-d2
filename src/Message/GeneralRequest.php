@@ -17,7 +17,7 @@ abstract class GeneralRequest extends AbstractRequest
             'cancelurl'             => $this->getCancelUrl(),
             'currency'              => $this->getCurrencyNumeric(),
             'merchant'              => $this->getMerchantId(),
-            'orderid'               => $this->getTransactionId(),
+            'orderid'               => $this->getTransactionReference(),
             'md5key'                => $this->getMd5Key(),
             'lang'                  => $this->getLang(),
             'payType'               => $this->getPayType(),
@@ -76,7 +76,7 @@ abstract class GeneralRequest extends AbstractRequest
         $key2 = $this->getKey2();
 
         if (empty($key1) || empty($key2)) {
-            return null;
+            return;
         }
 
         $parameter_string = '';
