@@ -81,7 +81,7 @@ abstract class GeneralRequest extends AbstractRequest
 
         $parameter_string = '';
         $parameter_string .= 'merchant=' . $this->getMerchantId();
-        $parameter_string .= '&orderid=' . $this->getTransactionId();
+        $parameter_string .= '&orderid=' . $this->getTransactionReference();
         $parameter_string .= '&currency=' . $this->getCurrencyNumeric();
         $parameter_string .= '&amount=' . $this->getAmountInteger();
 
