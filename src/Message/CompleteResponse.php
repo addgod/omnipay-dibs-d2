@@ -5,7 +5,7 @@ namespace Omnipay\DibsD2\Message;
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
- * Dummy Response
+ * Dummy Response.
  */
 class CompleteResponse extends AbstractResponse
 {
@@ -35,12 +35,12 @@ class CompleteResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return in_array($this->data['statuscode'], [2, 5, 7, 11]);
+        return \in_array($this->data['statuscode'], [2, 5, 7, 11]);
     }
 
     public function getTransactionReference()
     {
-        return $this->data['transact'] ?? null;
+        return $this->data['orderid'] ?? null;
     }
 
     public function getCode()
@@ -55,6 +55,6 @@ class CompleteResponse extends AbstractResponse
 
     public function getTransactionId()
     {
-        return $this->data['orderid'] ?? null;
+        return $this->data['transact'] ?? null;
     }
 }
