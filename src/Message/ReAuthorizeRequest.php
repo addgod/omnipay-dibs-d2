@@ -16,7 +16,7 @@ class ReAuthorizeRequest extends GeneralRequest
     {
         $data = [
             'merchant'      => $this->getMerchantId(),
-            'transact'      => $this->getTransactionId(),
+            'transact'      => $this->getTransactionReference(),
             'textreply'     => "yes",
         ];
 

@@ -17,12 +17,12 @@ class PostResponse extends AbstractResponse
         return isset($this->data['status']) && $this->data['status'] === 'ACCEPTED';
     }
 
-    public function getTransactionReference()
+    public function getTransactionId()
     {
         return $this->data['orderid'] ?? null;
     }
 
-    public function getTransactionId()
+    public function getTransactionReference()
     {
         return $this->data['transact'] ?? null;
     }

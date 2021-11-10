@@ -38,7 +38,7 @@ class CompleteResponse extends AbstractResponse
         return \in_array($this->data['statuscode'], [2, 5, 7, 11]);
     }
 
-    public function getTransactionReference()
+    public function getTransactionId()
     {
         return $this->data['orderid'] ?? null;
     }
@@ -53,7 +53,7 @@ class CompleteResponse extends AbstractResponse
         return $this->statusCodes[$this->getCode()] ?? null;
     }
 
-    public function getTransactionId()
+    public function getTransactionReference()
     {
         return $this->data['transact'] ?? null;
     }

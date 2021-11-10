@@ -127,7 +127,7 @@ class GatewayTest extends GatewayTestCase
 
         $response = $request->send();
         $this->assertTrue($response->isSuccessful());
-        $this->assertSame('250525', $response->getTransactionReference());
+        $this->assertSame('250525', $response->getTransactionId());
     }
 
     public function testCompletePurchaseWithNoMd5()
@@ -142,7 +142,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertInstanceOf(CompleteRequest::class, $request);
 
         $response = $request->send();
-        $this->assertSame('250525', $response->getTransactionReference());
+        $this->assertSame('250525', $response->getTransactionId());
     }
 
     public function testCompletePurchaseWithMd5Failure()

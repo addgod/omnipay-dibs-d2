@@ -10,10 +10,10 @@ class RefundRequest extends GeneralRequest
     {
         $data = [
             'merchant'      => $this->getMerchantId(),
-            'transact'      => $this->getTransactionId(),
+            'transact'      => $this->getTransactionReference(),
             'amount'        => $this->getAmountInteger(),
             'currency'      => $this->getCurrencyNumeric(),
-            'orderid'       => $this->getTransactionReference(),
+            'orderid'       => $this->getTransactionId(),
             'md5key'        => $this->getMd5Key(),
             'textreply'     => "yes",
         ];
@@ -28,5 +28,4 @@ class RefundRequest extends GeneralRequest
         parse_str($http_response->getBody(true), $output);
         return $this->response = new PostResponse($this, $output);
     }
-
 }
